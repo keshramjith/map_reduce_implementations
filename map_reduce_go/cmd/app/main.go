@@ -16,6 +16,11 @@ func main() {
 	}
 
 	for _, dirEntry := range dirEntries {
-		fmt.Println(dirEntry.Name())
+		fullPath := fmt.Sprintf("../input_files/%s", dirEntry.Name())
+		data, err := os.ReadFile(fullPath)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Print(string(data))
 	}
 }
